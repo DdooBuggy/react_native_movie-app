@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import { Text, View, Image } from "react-native";
+import { View, Image } from "react-native";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
+import Tabs from "./navigation/Tabs";
 
 const loadFonts = (fonts) => fonts.map((font) => Font.loadAsync(font));
 const loadImages = (images) =>
@@ -22,11 +24,7 @@ export default function App() {
       try {
         await SplashScreen.preventAutoHideAsync();
         const fonts = loadFonts([Ionicons.font]);
-        const images = loadImages([
-          require("./window.jpg"),
-          "https://reactnative.dev/img/oss_logo.png",
-        ]);
-        await Promise.all([...fonts, ...images]);
+        await Promise.all([...fonts]);
         await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
@@ -46,11 +44,9 @@ export default function App() {
     return null;
   }
   return (
-    <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      onLayout={onLayoutRootView}
-    >
-      <Text>Loading completed!!!</Text>
-    </View>
+    <NavigationContainer>
+      <View onLayout={onLayoutRootView}></View>
+      <Tabs />
+    </NavigationContainer>
   );
 }
