@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Movies from "./screens/Movies";
-import Tv from "./screens/Tv";
-import Search from "./screens/Search";
+import Movies from "../screens/Movies";
+import Tv from "../screens/Tv";
+import Search from "../screens/Search";
 import { themeColor } from "../colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useColorScheme } from "react-native";
