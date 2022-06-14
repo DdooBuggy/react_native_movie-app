@@ -75,8 +75,10 @@ const Detail: React.FC<DetailScreenProps> = ({
   const shareMedia = async () => {
     const isAndroid = Platform.OS === "android";
     const homepage = isMovie
-      ? `https://www.imdb.com/title/${data.imdb_id}/`
-      : data.homepage;
+      ? //@ts-ignore
+        `https://www.imdb.com/title/${data.imdb_id}/`
+      : //@ts-ignore
+        data.homepage;
     if (isAndroid) {
       await Share.share({
         message: homepage,

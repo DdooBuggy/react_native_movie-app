@@ -1,7 +1,6 @@
 import React from "react";
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
-import { IMovie, ITv } from "../api";
 import VMedia from "../components/VMedia";
 
 const ListTitle = styled.Text`
@@ -20,13 +19,12 @@ const HListSeparator = styled.View`
 
 interface HListProps {
   title: string;
-  data: IMovie[] | ITv[];
+  data: any[];
 }
 const HList: React.FC<HListProps> = ({ title, data }) => (
   <ListContainer>
     <ListTitle>{title}</ListTitle>
     <FlatList
-      //@ts-ignore
       data={data}
       horizontal
       showsHorizontalScrollIndicator={false}
@@ -36,7 +34,6 @@ const HList: React.FC<HListProps> = ({ title, data }) => (
       renderItem={({ item }) => (
         <VMedia
           posterPath={item.poster_path || ""}
-          //@ts-ignore
           originalTitle={item.original_title ?? item.original_name}
           voteAverage={item.vote_average}
           fullData={item}
