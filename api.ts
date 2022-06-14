@@ -5,21 +5,45 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 // types ----------------------------------------------------
 export interface IMovie {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  original_name: string;
-  overview: string;
-  popularity: number;
   poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
+  popularity: number;
+  id: number;
+  backdrop_path: string | null;
   vote_average: number;
+  overview: string;
+  genre_ids: number[];
+  original_language: string;
   vote_count: number;
+  title: string;
+  original_title: string;
+  adult: boolean;
+  release_date: string;
+  video: boolean;
+}
+export interface ITv {
+  poster_path: string | null;
+  popularity: number;
+  id: number;
+  backdrop_path: string | null;
+  vote_average: number;
+  overview: string;
+  first_air_date: string;
+  origin_country: string[];
+  genre_ids: number[];
+  original_language: string;
+  vote_count: number;
+  name: string;
+  original_name: string;
+  media_type: string;
+}
+export interface IDetail {
+  videos: {
+    results: {
+      site: string;
+      key: string;
+      name: string;
+    }[];
+  };
 }
 interface BaseResponse {
   page: number;
@@ -28,6 +52,9 @@ interface BaseResponse {
 }
 export interface MovieResponse extends BaseResponse {
   results: IMovie[];
+}
+export interface TvResponse extends BaseResponse {
+  results: ITv[];
 }
 
 // APIs ----------------------------------------------------
