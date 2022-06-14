@@ -37,6 +37,8 @@ export interface ITv {
   media_type: string;
 }
 export interface IDetail {
+  imdb_id: string | null;
+  homepage: string;
   videos: {
     results: {
       site: string;
